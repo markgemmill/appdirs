@@ -4,7 +4,9 @@ import (
 	"path"
 )
 
-func MakeAppDir(root, appName, version string) string {
+var VERSION = "0.1.0-dev.0"
+
+func MakeAppDir(root, appName, version string, extra ...string) string {
 
 	if len(appName) > 0 {
 		root = path.Join(root, appName)
@@ -12,6 +14,10 @@ func MakeAppDir(root, appName, version string) string {
 
 	if len(appName) > 0 && len(version) > 0 {
 		root = path.Join(root, version)
+	}
+
+	for _, e := range extra {
+		root = path.Join(root, e)
 	}
 
 	return root

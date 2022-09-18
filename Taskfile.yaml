@@ -14,6 +14,10 @@ tasks:
     cmds:
       - GOOS=linux GOARCH=amd64 go build -o bin/linux/appdirs  ./cli/main.go
 
+  build:windows:
+    cmds:
+      - GOOS=windows GOARCH=amd64 go build -o bin/win/appdirs ./cli/main.go
+
   deploy:linux:
     cmds:
       - task: build:linux

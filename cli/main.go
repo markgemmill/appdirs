@@ -35,5 +35,4 @@ func main() {
 	fmt.Printf("Site Data:    %s\n", appdir.SiteDataDir())
 	fmt.Printf("Site Config:  %s\n", appdir.SiteConfigDir())
 	fmt.Printf("Site Logs:    %s\n", appdir.SiteLogDir())
-
 }
