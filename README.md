@@ -71,45 +71,6 @@ Site Data:   C:\ProgramData\myapp\1.0
 Site Config: C:\ProgramData\myapp\1.0\config
 ```
 
-### Without App Name or Version
-
-```go
-// Get base directories without app-specific subdirectories
-dirs := appdirs.NewAppDirs("", "")
-fmt.Println(dirs.UserDataDir())  // macOS: /Users/username/Library/Application Support
-```
-
-## API Reference
-
-### Type: AppDirs
-
-```go
-type AppDirs struct {
-    Name    string  // Application name
-    Version string  // Application version
-}
-```
-
-Create with: `NewAppDirs(name, version string) AppDirs`
-
-### Methods
-
-#### User-Level Directories
-
-- `UserAppDir() string` - User application directory
-- `UserDataDir() string` - User data directory
-- `UserConfigDir() string` - User configuration directory
-- `UserCacheDir() string` - User cache directory
-- `UserLogDir() string` - User log directory
-
-#### System-Level Directories
-
-- `SiteAppDir() string` - System application directory
-- `SiteDataDir() string` - System data directory
-- `SiteConfigDir() string` - System configuration directory
-- `SiteLogDir() string` - System log directory
-
-
 ### Note on Directory Creation
 
 This library only returns directory paths; it does not create them.

@@ -5,12 +5,12 @@ package appdirs
 
 import (
 	"os"
-	"path"
+	"path/filepath"
 )
 
 func UserAppData() string {
 	home, _ := os.UserHomeDir()
-	return path.Join(home, "AppData", "Local")
+	return filepath.Join(home, "AppData", "Local")
 }
 
 func ProgramData() string {
@@ -20,7 +20,7 @@ func ProgramData() string {
 func UserAppDir(appName, version string) string {
 	home, _ := os.UserHomeDir()
 
-	root := path.Join(home, "Applications")
+	root := filepath.Join(home, "Applications")
 	return buildAppDir(root, appName, version)
 }
 
