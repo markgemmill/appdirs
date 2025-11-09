@@ -1,13 +1,17 @@
 package appdirs
 
 import (
+	"fmt"
 	"path/filepath"
 )
 
 func buildAppDir(root, appName, version string, extra ...string) string {
-	if len(appName) > 0 {
-		root = filepath.Join(root, appName)
+	// this should never panic unless user creates AppDirs directly
+	if appName == "" {
+		panic("app name is an empty string")
 	}
+
+	root = filepath.Join(root, appName)
 
 	if len(appName) > 0 && len(version) > 0 {
 		root = filepath.Join(root, version)
@@ -25,11 +29,14 @@ type AppDirs struct {
 	Version string
 }
 
-func NewAppDirs(name, version string) AppDirs {
+func NewAppDirs(name, version string) (AppDirs, error) {
+	if name == "" {
+		return AppDirs{}, fmt.Errorf("app name cannot be an empty string")
+	}
 	return AppDirs{
 		Name:    name,
 		Version: version,
-	}
+	}, nil
 }
 
 func (d AppDirs) UserAppDir() string {

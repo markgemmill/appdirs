@@ -22,7 +22,11 @@ import (
 
 func main() {
     // Create an AppDirs instance for your application
-    dirs := appdirs.NewAppDirs("myapp", "1.0")
+    dirs, err := appdirs.NewAppDirs("myapp", "1.0")
+
+    if err != nil {
+        panic("this is only going to happen if app name is blank")
+    }
 
     // Get user-level directories
     fmt.Println("User Data:", dirs.UserDataDir())

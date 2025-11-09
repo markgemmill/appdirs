@@ -3,6 +3,10 @@
 version: '3'
 
 tasks:
+  test:
+    cmds:
+      - gotestsum -f testname 
+
   build:osx:
     cmds:
       - go build -o bin/osx/appdirs  ./cli/main.go
