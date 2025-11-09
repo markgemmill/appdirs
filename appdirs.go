@@ -1,23 +1,20 @@
 package appdirs
 
 import (
-	"path"
+	"path/filepath"
 )
 
-var VERSION = "0.1.0-dev.0"
-
-func MakeAppDir(root, appName, version string, extra ...string) string {
-
+func buildAppDir(root, appName, version string, extra ...string) string {
 	if len(appName) > 0 {
-		root = path.Join(root, appName)
+		root = filepath.Join(root, appName)
 	}
 
 	if len(appName) > 0 && len(version) > 0 {
-		root = path.Join(root, version)
+		root = filepath.Join(root, version)
 	}
 
 	for _, e := range extra {
-		root = path.Join(root, e)
+		root = filepath.Join(root, e)
 	}
 
 	return root
@@ -35,38 +32,38 @@ func NewAppDirs(name, version string) AppDirs {
 	}
 }
 
-func (d *AppDirs) UserAppDir() string {
+func (d AppDirs) UserAppDir() string {
 	return UserAppDir(d.Name, d.Version)
 }
 
-func (d *AppDirs) UserDataDir() string {
+func (d AppDirs) UserDataDir() string {
 	return UserDataDir(d.Name, d.Version)
 }
 
-func (d *AppDirs) UserConfigDir() string {
+func (d AppDirs) UserConfigDir() string {
 	return UserConfigDir(d.Name, d.Version)
 }
 
-func (d *AppDirs) UserCacheDir() string {
+func (d AppDirs) UserCacheDir() string {
 	return UserCacheDir(d.Name, d.Version)
 }
 
-func (d *AppDirs) UserLogDir() string {
+func (d AppDirs) UserLogDir() string {
 	return UserLogDir(d.Name, d.Version)
 }
 
-func (d *AppDirs) SiteAppDir() string {
+func (d AppDirs) SiteAppDir() string {
 	return SiteAppDir(d.Name, d.Version)
 }
 
-func (d *AppDirs) SiteDataDir() string {
+func (d AppDirs) SiteDataDir() string {
 	return SiteDataDir(d.Name, d.Version)
 }
 
-func (d *AppDirs) SiteConfigDir() string {
+func (d AppDirs) SiteConfigDir() string {
 	return SiteConfigDir(d.Name, d.Version)
 }
 
-func (d *AppDirs) SiteLogDir() string {
+func (d AppDirs) SiteLogDir() string {
 	return SiteLogDir(d.Name, d.Version)
 }

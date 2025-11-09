@@ -2,3 +2,6 @@ bin
 .DS_Store
 .idea
 dist/
+CLAUDE.md
+TODO.md
+TODO.txt
