@@ -87,8 +87,8 @@ func TestSiteAppDir(t *testing.T) {
 
 func TestSiteConfigDir(t *testing.T) {
 	expected_results := []DirTest{
-		NewDirTest("appie", "1.0", "/etc/xdg/appie/1.0"),
-		NewDirTest("appie", "", "/etc/xdg/appie"),
+		NewDirTest("appie", "1.0", "/etc/appie/1.0"),
+		NewDirTest("appie", "", "/etc/appie"),
 	}
 	for _, app := range expected_results {
 		appDirs, _ := NewAppDirs(app.Name, app.Version)

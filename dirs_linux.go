@@ -52,6 +52,7 @@ func UserLogDir(appName, version string) string {
 	return filepath.Join(root, "log")
 }
 
+// site directories
 func SiteAppDir(appName, version string) string {
 	root := filepath.Join("/usr", "bin")
 	return buildAppDir(root, appName, version)
@@ -63,7 +64,7 @@ func SiteDataDir(appName, version string) string {
 }
 
 func SiteConfigDir(appName, version string) string {
-	root := filepath.Join("/etc", "xdg")
+	root := "/etc"
 	return buildAppDir(root, appName, version)
 }
 

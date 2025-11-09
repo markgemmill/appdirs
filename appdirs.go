@@ -29,6 +29,58 @@ type AppDirs struct {
 	Version string
 }
 
+/*
+AppDirs generally follows the guidance of it's python namesake. We do not
+provide `roaming` (Windows), or `app author` options. Nor do we provide for
+multiple directory options on Linux. The main task is to provide a unified
+set of standard directory options that related to the execution of a named
+application.
+
+Derived from `https://github.com/ActiveState/appdirs` documentation:
+
+Typical user data directories are:
+
+	Mac OS:    ~/Library/Application Support/<AppName>
+	Unix:      ~/.local/share/<AppName>    # or in $XDG_DATA_HOME, if defined
+	Windows    C:\Users\<username>\AppData\Local\<AppName>
+
+Typical site data directories are:
+
+	Mac OS:    /Library/Application Support/<AppName>
+	Unix:      /usr/local/share/<AppName> or /usr/share/<AppName>
+	Windowns:  C:\ProgramData\<AppName>
+
+Typical user config directories are:
+
+	Mac OS:    ~/Library/Preferences/<AppName>
+	Unix:      ~/.config/<AppName>     # or in $XDG_CONFIG_HOME, if defined
+	Windows:   same as user_data_dir
+
+Typical site config directories are:
+
+	Mac OS:    same as site_data_dir
+	Unix:      /etc/<AppName>
+	Windows:   same as site_data_dir
+
+Typical user cache directories are:
+
+	Mac OS:    ~/Library/Caches/<AppName>
+	Unix:      ~/.cache/<AppName> (XDG default)
+	Windows:   C:\Users\<username>\AppData\Local\<AppName>\Cache
+
+Typical user state directories are:
+
+	Mac OS:    same as user_data_dir
+	Unix:      ~/.local/state/<AppName>   # or in $XDG_STATE_HOME, if defined
+	Windows:   same as user_data_dir
+
+Typical user log directories are:
+
+	Mac OS:    ~/Library/Logs/<AppName>
+	Unix:      ~/.cache/<AppName>/log  # or under $XDG_CACHE_HOME if defined
+
+Windows:       C:\Users\<username>\AppData\Local\<AppAuthor>\<AppName>\Logs
+*/
 func NewAppDirs(name, version string) (AppDirs, error) {
 	if name == "" {
 		return AppDirs{}, fmt.Errorf("app name cannot be an empty string")
