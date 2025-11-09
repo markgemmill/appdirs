@@ -8,7 +8,6 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/markgemmill/appdirs"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -84,14 +83,14 @@ func NewDirTest(name, version, expected string) DirTest {
 }
 
 func sitePath(pathExtension string) string {
-	site := appdirs.ProgramData()
+	site := ProgramData()
 	return filepath.Join(site, pathExtension)
 }
 
 func TestSiteAppDir(t *testing.T) {
 	expected_results := []DirTest{
-		NewDirTest("", "", appdirs.Programdata()),
-		NewDirTest("", "1.0", appdirs.ProgramData()),
+		NewDirTest("", "", Programdata()),
+		NewDirTest("", "1.0", ProgramData()),
 		NewDirTest("appie", "1.0", sitePath("\\appie\\1.0")),
 		NewDirTest("appie", "", sitePath("appie")),
 	}
@@ -116,8 +115,8 @@ func TestSiteConfigDir(t *testing.T) {
 
 func TestSiteDataDir(t *testing.T) {
 	expected_results := []DirTest{
-		NewDirTest("", "", appdirs.ProgramData()),
-		NewDirTest("", "1.0", appdirs.ProgramData()),
+		NewDirTest("", "", ProgramData()),
+		NewDirTest("", "1.0", ProgramData()),
 		NewDirTest("appie", "1.0", sitePath("appie\\1.0")),
 		NewDirTest("appie", "", sitePath("appie")),
 	}
