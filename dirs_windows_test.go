@@ -89,7 +89,7 @@ func sitePath(pathExtension string) string {
 
 func TestSiteAppDir(t *testing.T) {
 	expected_results := []DirTest{
-		NewDirTest("", "", Programdata()),
+		NewDirTest("", "", ProgramData()),
 		NewDirTest("", "1.0", ProgramData()),
 		NewDirTest("appie", "1.0", sitePath("\\appie\\1.0")),
 		NewDirTest("appie", "", sitePath("appie")),
