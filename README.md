@@ -109,42 +109,7 @@ Create with: `NewAppDirs(name, version string) AppDirs`
 - `SiteConfigDir() string` - System configuration directory
 - `SiteLogDir() string` - System log directory
 
-### Package-Level Functions
-
-All methods are also available as package-level functions:
-
-```go
-func UserDataDir(appName, version string) string
-func UserConfigDir(appName, version string) string
-// ... etc
-```
-
-## Platform Details
-
-### Linux XDG Support
-
-On Linux, the library respects XDG environment variables:
-
-- `XDG_DATA_HOME` (default: `~/.local/share`)
-- `XDG_CONFIG_HOME` (default: `~/.config`)
-- `XDG_CACHE_HOME` (default: `~/.cache`)
 
 ### Note on Directory Creation
 
 This library only returns directory paths; it does not create them.
-
-Example:
-
-```go
-dataDir := appdirs.UserDataDir("myapp", "1.0")
-if err := os.MkdirAll(dataDir, 0755); err != nil {
-    log.Fatal(err)
-}
-
-
----
-
-### THINGS TO FIX
-
-  1. Path Traversal Risk (Low): The MakeAppDir function doesn't sanitize inputs. If appName or version contain .. or absolute
-  paths, they could escape the intended directory. Consider adding validation.
