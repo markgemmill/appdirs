@@ -31,10 +31,10 @@ func TestUserDataDir(t *testing.T) {
 
 func TestUserCacheDir(t *testing.T) {
 	expected_results := [][]string{
-		{"", "", homePath("AppData\\Local")},
-		{"", "1.0", homePath("AppData\\Local")},
-		{"appie", "1.0", homePath("AppData\\Local\\appie\\1.0")},
-		{"appie", "", homePath("AppData\\Local\\appie")},
+		{"", "", homePath("AppData\\Local\\cache")},
+		{"", "1.0", homePath("AppData\\Local\\cache")},
+		{"appie", "1.0", homePath("AppData\\Local\\appie\\1.0\\cache")},
+		{"appie", "", homePath("AppData\\Local\\appie\\cache")},
 	}
 	for _, args := range expected_results {
 		app := NewAppDirs(args[0], args[1])
@@ -57,8 +57,8 @@ func TestUserConfigDir(t *testing.T) {
 
 func TestUserLogDir(t *testing.T) {
 	expected_results := [][]string{
-		{"", "", homePath("AppData\\Local")},
-		{"", "1.0", homePath("AppData\\Local")},
+		{"", "", homePath("AppData\\Local\\logs")},
+		{"", "1.0", homePath("AppData\\Local\\logs")},
 		{"appie", "1.0", homePath("AppData\\Local\\appie\\1.0\\logs")},
 		{"appie", "", homePath("AppData\\Local\\appie\\logs")},
 	}
