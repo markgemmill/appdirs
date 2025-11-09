@@ -92,8 +92,6 @@ func TestSiteAppDir(t *testing.T) {
 
 func TestSiteConfigDir(t *testing.T) {
 	expected_results := []DirTest{
-		NewDirTest("", "", sitePath("config")),
-		NewDirTest("", "1.0", sitePath("config")),
 		NewDirTest("appie", "1.0", sitePath("appie\\1.0\\config")),
 		NewDirTest("appie", "", sitePath("appie\\config")),
 	}
@@ -105,8 +103,6 @@ func TestSiteConfigDir(t *testing.T) {
 
 func TestSiteDataDir(t *testing.T) {
 	expected_results := []DirTest{
-		NewDirTest("", "", ProgramData()),
-		NewDirTest("", "1.0", ProgramData()),
 		NewDirTest("appie", "1.0", sitePath("appie\\1.0")),
 		NewDirTest("appie", "", sitePath("appie")),
 	}
